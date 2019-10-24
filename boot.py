@@ -89,7 +89,7 @@ while(True):
 			else:
 				scalx = 1.5
 				scaly = 1.5
-			#embed on top of the image saved in the micropython memory heap a picture of joker that is also scaled as close as possible to the face , the is not png transperancy support so you have a mask 
+			#embed on top of the image saved in the micropython memory heap a picture of joker that is also scaled as close as possible to the face , there is not png support so you have a mask 
 			img.draw_image(image.Image("/sd/facej.jpg"),i.x(),i.y(),x_scale=scalx,y_scale=scaly,mask=image.Image("/sd/face-maskj.jpg"))
 			#a = img.draw_rectangle(i.rect())
 			#path = "/sd/image"+str(random.randrange(1, 1000))+"c"+str(random.randrange(1, 99))+".jpg"
