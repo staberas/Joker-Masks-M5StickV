@@ -51,7 +51,7 @@ sensor.reset()
 sensor.set_pixformat(sensor.RGB565)
 sensor.set_framesize(sensor.QVGA)
 sensor.run(1)
-#init the neural net - 0x300000 is the memory location of the face detection model that came with the board
+#init the neural net - 0x300000 is the memory location of the face detection model that came with the firmware
 task = kpu.load(0x300000)
 #classes of the model (currently not used)
 classes = ['aeroplane', 'bicycle', 'bird', 'boat', 'bottle', 'bus', 'car', 'cat', 'chair', 'cow', 'diningtable', 'dog', 'horse', 'motorbike', 'person', 'pottedplant', 'sheep', 'sofa', 'train', 'tvmonitor']
@@ -89,7 +89,7 @@ while(True):
 			else:
 				scalx = 1.5
 				scaly = 1.5
-			#embed on top of the image saved in the micropython memory heap a picture of joker that is also scaled as close as possible to the face 	
+			#embed on top of the image saved in the micropython memory heap a picture of joker that is also scaled as close as possible to the face , the is not png transperancy support so you have a mask 
 			img.draw_image(image.Image("/sd/facej.jpg"),i.x(),i.y(),x_scale=scalx,y_scale=scaly,mask=image.Image("/sd/face-maskj.jpg"))
 			#a = img.draw_rectangle(i.rect())
 			#path = "/sd/image"+str(random.randrange(1, 1000))+"c"+str(random.randrange(1, 99))+".jpg"
@@ -111,7 +111,7 @@ while(True):
 	if but_a.value() == 1 and but_stu == 0:
 		but_stu = 1
 	if but_b.value() == 0:
-		#python lcd draw string fucntion 
+		#python lcd draw string function 
 		lcd.draw_string(lcd.width()//2-100,lcd.height()//3-4, " "+str(pmu.getTemperature())+"C  ", lcd.WHITE, lcd.RED)
 		#lcd.draw_string(lcd.width()//2-100,lcd.height()//2-4, " "+str(pmu.getBatteryDischargeCurrent())+" ", lcd.WHITE, lcd.RED)
 		a = lcd.display(img)
